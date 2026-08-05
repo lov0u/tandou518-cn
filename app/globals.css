@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-50: #fffbeb;
+  --brand-100: #fef3c7;
+  --brand-400: #fbbf24;
+  --brand-600: #d97706;
+  --brand-700: #92400e;
+  --brand-900: #451a03;
+  --warm-500: #78716c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background-color: #fffbeb;
+  color: #451a03;
+  -webkit-fontoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 - 暖色调 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #92400e;
+}
+
+/* 通用动画 */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 暖色渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 卡片悬停效果 - 暖色阴影 */
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(146, 64, 14, 0.15);
+}
+
+/* 暖色柔和阴影 */
+.shadow-warm {
+  box-shadow: 0 4px 20px rgba(146, 64, 14, 0.1);
+}
+.shadow-warm-lg {
+  box-shadow: 0 8px 30px rgba(146, 64, 14, 0.15);
+}
+
+/* 按钮样式 */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background-color: #92400e;
+  color: white;
+  font-weight: 600;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: #d97706;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(146, 64, 14, 0.3);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border: 2px solid #92400e;
+  color: #92400e;
+  font-weight: 600;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background-color: transparent;
+}
+.btn-outline:hover {
+  background-color: #92400e;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 暖色渐变背景 */
+.bg-warm-gradient {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+}
+
+/* 爪印装饰背景 */
+.paw-pattern {
+  background-image: radial-gradient(circle, rgba(217, 119, 6, 0.08) 2px, transparent 2px);
+  background-size: 30px 30px;
+}
+
+/* 链接样式 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 段落容器 */
+.prose-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: #57534e;
+}
+.prose-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #451a03;
+}
+.prose-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #451a03;
+}
+.prose-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+.prose-content ul li {
+  list-style: disc;
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+  color: #57534e;
+}
+.prose-content strong {
+  font-weight: 600;
+  color: #451a03;
+}
