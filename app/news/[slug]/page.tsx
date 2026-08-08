@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getAllArticleSlugs } from "@/lib/payload";
 import { companyInfo } from "@/lib/data";
+import ArticleCharts from "@/app/ArticleCharts";
 
 export const revalidate = 3600;
 
@@ -98,6 +99,7 @@ export default async function NewsDetailPage({
           className="prose-content max-w-none"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+        <ArticleCharts />
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-brand-200">
