@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getArticles } from "@/lib/payload";
 import { companyInfo } from "@/lib/data";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "新闻资讯",
@@ -33,23 +33,29 @@ export default async function NewsPage() {
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {articles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {articles.map((article) => (
                 <Link
                   key={article.id}
                   href={`/news/${article.slug}`}
-                  className="bg-white rounded-3xl overflow-hidden shadow-warm card-hover"
+                  className="group bg-white rounded-3xl overflow-hidden shadow-warm card-hover"
                 >
-                  {article.coverImage && (
-                    <div className="h-52 overflow-hidden">
+                  {article.coverImage ? (
+                    <div className="aspect-[21/9] overflow-hidden bg-brand-100">
                       <img
                         src={article.coverImage}
                         alt={article.title}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
+                  ) : (
+                    <div className="aspect-[21/9] bg-brand-100 flex items-center justify-center">
+                      <svg className="w-12 h-12 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                    </div>
                   )}
-                  <div className="p-6">
+                  <div className="p-5">
                     <div className="text-xs text-warm-400 mb-2">
                       {new Date(article.publishedAt).toLocaleDateString("zh-CN")}
                     </div>
