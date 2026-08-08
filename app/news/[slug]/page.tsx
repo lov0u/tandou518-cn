@@ -83,17 +83,6 @@ export default async function NewsDetailPage({
           )}
         </header>
 
-        {/* Cover Image */}
-        {article.coverImage && (
-          <div className="rounded-3xl overflow-hidden shadow-warm-lg mb-8">
-            <img
-              src={article.coverImage}
-              alt={article.title}
-              className="w-full h-96 object-cover"
-            />
-          </div>
-        )}
-
         {/* Content */}
         <div
           className="prose-content max-w-none"
