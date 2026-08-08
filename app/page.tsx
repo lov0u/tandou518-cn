@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { pets, categories, services, companyInfo } from "@/lib/data";
-import { getArticles } from "@/lib/strapi";
+import { getArticles } from "@/lib/payload";
 
 export const revalidate = 3600;
 
