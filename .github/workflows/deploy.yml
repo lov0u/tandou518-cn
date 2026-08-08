@@ -8,7 +8,7 @@ on:
 env:
   ACR_REGISTRY: crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com
   ACR_NAMESPACE: lov0u
-  IMAGE_NAME: tandou518
+  IMAGE_NAME: tandou518-cn
   SITE_SLUG: tandou518
   PORT: 3006
 
@@ -26,8 +26,8 @@ jobs:
         context: .
         push: true
         tags: |
-          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518:latest
-          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518:${{github.sha}}
+          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518-cn:latest
+          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518-cn:${{github.sha}}
 
     - name: Deploy to server
       uses: appleboy/ssh-action@v1
@@ -36,21 +36,21 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          echo "=== Deploy tandou518 ==="
+          echo "=== Deploy tandou518-cn ==="
           echo "Login ACR..."
           docker login crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
           echo "Pull image..."
-          docker pull crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518:latest
+          docker pull crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518-cn:latest
           echo "Stop old container..."
-          docker stop tandou518 || true
-          docker rm tandou518 || true
+          docker stop tandou518-cn || true
+          docker rm tandou518-cn || true
           echo "Start new container..."
           docker run -d \
-            --name tandou518 \
+            --name tandou518-cn \
             --restart always \
             -p 3006:3000 \
             -e NODE_ENV=production \
-            crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518:latest
+            crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/tandou518-cn:latest
           echo "Prune old images..."
           docker image prune -f
           echo "Done!"
